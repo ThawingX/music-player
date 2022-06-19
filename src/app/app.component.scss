@@ -1,0 +1,352 @@
+// 容器样式
+.container {
+  font-family: var(--body-font);
+  background-image: url(https://wallpapershome.com/images/wallpapers/macos-big-sur-1280x720-dark-wwdc-2020-22655.jpg);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 2em;
+  width: 100%;
+  height: 100vh;
+  @media screen and (max-width: 480px) {
+    padding: 0.8em;
+  }
+}
+// 背景动画样式
+.video-bg {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+img {
+  max-width: 100%;
+}
+// 暗黑主题
+.dark-light {
+  position: fixed;
+  bottom: 50px;
+  right: 30px;
+  background-color: var(--dropdown-bg);
+  box-shadow: -1px 3px 8px -1px rgba(0, 0, 0, 0.2);
+  padding: 8px;
+  border-radius: 50%;
+  z-index: 3;
+  cursor: pointer;
+  svg {
+    width: 24px;
+    flex-shrink: 0;
+    fill: #ffce45;
+    stroke: #ffce45;
+    transition: 0.5s;
+  }
+}
+//  明亮主题
+.light-mode {
+  .dark-light svg {
+    fill: transparent;
+    stroke: var(--theme-color);
+  }
+}
+
+// 明亮主题时，添加背景滤镜，更加契合明亮主题
+// .container.light-mode:before,不知道用意如何
+.container.light-mode .video-bg:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.72) 0%, rgb(255 255 255 / 45%) 100%);
+  backdrop-filter: saturate(3);
+}
+
+// 主应用的样式
+.app {
+  background-color: var(--theme-bg-color);
+  max-width: 1250px;
+  max-height: 860px;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  border-radius: 14px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+// header样式
+.header {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  height: 58px;
+  width: 100%;
+  border-bottom: 1px solid var(--border-color);
+  padding: 0 30px;
+  white-space: nowrap;
+  @media screen and (max-width: 480px) {
+    padding: 0 16px;
+  }
+  &-menu {
+    display: flex;
+    align-items: center;
+    a {
+      padding: 20px 30px;
+      text-decoration: none;
+      color: var(--inactive-color);
+      border-bottom: 2px solid transparent;
+      transition: 0.3s;
+      // @media screen and (max-width: 610px) {
+      //   &:not(.main-header-link) {
+      //     display: none;
+      //   }
+      // }
+      &:hover {
+        color: var(--theme-color);
+        border-bottom: 2px solid var(--theme-color);
+      }
+    }
+  }
+}
+// 通知图标
+.notify {
+  position: relative;
+  &:before {
+    content: "";
+    position: absolute;
+    background-color: #3a6df0;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    right: 20px;
+    top: 16px;
+  }
+  @media screen and (max-width: 1055px) {
+    display: none;
+  }
+}
+// 左上角模仿苹果标
+.menu-circle {
+  width: 15px;
+  height: 15px;
+  background-color: #f96057;
+  border-radius: 50%;
+  box-shadow: 24px 0 0 0 #f8ce52, 48px 0 0 0 #5fcf65;
+  margin-right: 195px;
+  flex-shrink: 0;
+  @media screen and (max-width: 945px) {
+    display: none;
+  }
+}
+// 搜索框
+.search-bar {
+  height: 40px;
+  display: flex;
+  width: 100%;
+  max-width: 400px;
+  padding-left: 16px;
+  border-radius: 4px;
+  input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: var(--search-bg);
+    border-radius: 4px;
+    font-family: var(--body-font);
+    font-size: 15px;
+    font-weight: 500;
+    padding: 0 20px 0 40px;
+    box-shadow: 0 0 0 2px rgb(134 140 160 / 2%);
+    // background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56.966 56.966' fill='%23717790c7'%3e%3cpath d='M55.146 51.887L41.588 37.786A22.926 22.926 0 0046.984 23c0-12.682-10.318-23-23-23s-23 10.318-23 23 10.318 23 23 23c4.761 0 9.298-1.436 13.177-4.162l13.661 14.208c.571.593 1.339.92 2.162.92.779 0 1.518-.297 2.079-.837a3.004 3.004 0 00.083-4.242zM23.984 6c9.374 0 17 7.626 17 17s-7.626 17-17 17-17-7.626-17-17 7.626-17 17-17z'/%3e%3c/svg%3e");
+    background-image: url("../assets/svg/search.svg");
+    background-size: 14px;
+    background-repeat: no-repeat;
+    background-position: 16px 48%;
+    color: var(--theme-color);
+    &::placeholder {
+      font-family: var(--body-font);
+      color: var(--inactive-color);
+      font-size: 15px;
+      font-weight: 500;
+    }
+  }
+}
+// 通知与头像
+.header-profile {
+  display: flex;
+  align-items: center;
+  padding: 0 16px 0 40px;
+  margin-left: auto;
+  flex-shrink: 0;
+  svg {
+    width: 22px;
+    color: #f9fafb;
+    flex-shrink: 0;
+  }
+}
+// 通知
+.notification {
+  position: relative;
+  &-number {
+    position: absolute;
+    background-color: #3a6df0;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    right: -6px;
+    top: -6px;
+  }
+  // ＜945px，通知相邻的兄弟不显示
+  & + svg {
+    margin-left: 22px;
+    @media screen and (max-width: 945px) {
+      display: none;
+    }
+  }
+}
+
+.profile-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--theme-color);
+  margin-left: 22px;
+}
+
+// 搜索框聚焦时添加，搜索框变宽
+.wide {
+  // 通知与头像、前进与后退隐藏
+  .header-menu,
+  .header-profile {
+    display: none;
+  }
+  // 搜索框变宽
+  .search-bar {
+    max-width: 600px;
+    margin: auto;
+    transition: 0.4s;
+    box-shadow: 0 0 0 1px var(--border-color);
+    padding-left: 0;
+  }
+  .menu-circle {
+    margin-right: 0;
+  }
+}
+// 主要内容由 侧边栏和内容构成， 子元素自动撑大容器
+.wrapper {
+  display: flex;
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+// 侧栏， ＜945px 直接隐藏
+.left-side {
+  flex-basis: 240px;
+  border-right: 1px solid var(--border-color);
+  padding: 26px;
+  overflow: auto;
+  flex-shrink: 0;
+  @media screen and (max-width: 945px) {
+    display: none;
+  }
+}
+// 这样的写法也就是除了第一个side-wrapper之外的side-wrapper都具有margin-top属性！！
+.side-wrapper + .side-wrapper {
+  margin-top: 20px;
+}
+
+.side-title {
+  color: var(--inactive-color);
+  margin-bottom: 14px;
+}
+
+.side-menu {
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap;
+  a {
+    text-decoration: none;
+    color: var(--theme-color);
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 6px;
+    transition: 0.3s;
+    &:hover {
+      background-color: var(--hover-menu-bg);
+    }
+  }
+  svg {
+    width: 16px;
+    margin-right: 8px;
+  }
+}
+// badge数字显示
+.updates {
+  position: relative;
+  top: 0;
+  right: 0;
+  margin-left: auto;
+  width: 18px;
+  height: 18px;
+  font-size: 11px;
+}
+// 内容容器
+.main-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+// 遮罩
+.overlay-app {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  pointer-events: all;
+  background-color: rgba(36, 39, 59, 0.8);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s;
+  // 当遮罩具有类 is-active时显示遮罩
+  &.is-active {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-bg);
+  border-radius: 10px;
+}
