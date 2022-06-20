@@ -2,10 +2,7 @@
   <!-- 背景 -->
   <div class="video-bg">
     <video width="320" height="240" autoplay loop muted>
-      <source
-        src="https://assets.codepen.io/3364143/7btrrd.mp4"
-        type="video/mp4"
-      />
+      <source src="https://assets.codepen.io/3364143/7btrrd.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
   </div>
@@ -31,17 +28,12 @@
       <div class="menu-circle"></div>
       <!-- 回退和前进 -->
       <div class="header-menu">
-        <a class="menu-link" href="#"><</a>
-        <a class="menu-link" href="#">></a>
+        <a class="menu-link" (click)="backward()"><</a>
+        <a class="menu-link" (click)="forward()">></a>
       </div>
       <!-- 搜索 -->
       <div class="search-bar">
-        <input
-          (focus)="searchIsFocus = true"
-          (blur)="searchIsFocus = false"
-          type="text"
-          placeholder="Search"
-        />
+        <input (focus)="searchIsFocus = true" (blur)="searchIsFocus = false" type="text" placeholder="Search" />
       </div>
       <!-- 通知与头像 -->
       <div class="header-profile">
@@ -57,9 +49,7 @@
             stroke-linejoin="round"
             class="feather feather-bell"
           >
-            <path
-              d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"
-            />
+            <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0" />
           </svg>
         </div>
         <!-- 云 -->
@@ -83,7 +73,7 @@
         <div class="side-wrapper">
           <div class="side-title">探索</div>
           <div class="side-menu">
-            <a href="#">
+            <a [routerLink]="['/home']" routerLinkActive="is-active">
               <svg viewBox="0 0 512 512">
                 <g xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                   <path
@@ -106,7 +96,7 @@
               </svg>
               音乐广场
             </a>
-            <a href="#">
+            <a [routerLink]="['/rec']" routerLinkActive="is-active">
               <svg viewBox="0 0 488.932 488.932" fill="currentColor">
                 <path
                   d="M243.158 61.361v-57.6c0-3.2 4-4.9 6.7-2.9l118.4 87c2 1.5 2 4.4 0 5.9l-118.4 87c-2.7 2-6.7.2-6.7-2.9v-57.5c-87.8 1.4-158.1 76-152.1 165.4 5.1 76.8 67.7 139.1 144.5 144 81.4 5.2 150.6-53 163-129.9 2.3-14.3 14.7-24.7 29.2-24.7 17.9 0 31.8 15.9 29 33.5-17.4 109.7-118.5 192-235.7 178.9-98-11-176.7-89.4-187.8-187.4-14.7-128.2 84.9-237.4 209.9-238.8z"
@@ -121,14 +111,9 @@
           <div class="side-title">我的音乐</div>
           <div class="side-menu">
             <!-- 关注动态 -->
-            <a href="#">
+            <a [routerLink]="['/news']" routerLinkActive="is-active">
               <svg viewBox="0 0 512 512" fill="currentColor">
-                <circle
-                  cx="295.099"
-                  cy="327.254"
-                  r="110.96"
-                  transform="rotate(-45 295.062 327.332)"
-                />
+                <circle cx="295.099" cy="327.254" r="110.96" transform="rotate(-45 295.062 327.332)" />
                 <path
                   d="M471.854 338.281V163.146H296.72v41.169a123.1 123.1 0 01121.339 122.939c0 3.717-.176 7.393-.5 11.027zM172.14 327.254a123.16 123.16 0 01100.59-120.915L195.082 73.786 40.146 338.281H172.64c-.325-3.634-.5-7.31-.5-11.027z"
                 />
@@ -136,7 +121,7 @@
               关注动态
             </a>
             <!-- 我的音乐 -->
-            <a href="#">
+            <a [routerLink]="['/my-music']" routerLinkActive="is-active">
               <svg viewBox="0 0 58 58" fill="currentColor">
                 <path
                   d="M57 6H1a1 1 0 00-1 1v44a1 1 0 001 1h56a1 1 0 001-1V7a1 1 0 00-1-1zM10 50H2v-9h8v9zm0-11H2v-9h8v9zm0-11H2v-9h8v9zm0-11H2V8h8v9zm26.537 12.844l-11 7a1.007 1.007 0 01-1.018.033A1.001 1.001 0 0124 36V22a1.001 1.001 0 011.538-.844l11 7a1.003 1.003 0 01-.001 1.688zM56 50h-8v-9h8v9zm0-11h-8v-9h8v9zm0-11h-8v-9h8v9zm0-11h-8V8h8v9z"
@@ -152,7 +137,10 @@
         <router-outlet></router-outlet>
       </div>
     </div>
+
     <!-- 遮罩 -->
     <div class="overlay-app"></div>
   </div>
 </div>
+
+<app-animation-leftdown class="animation-leftdown"></app-animation-leftdown>

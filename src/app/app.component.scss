@@ -60,6 +60,12 @@ img {
   }
 }
 
+.animation-leftdown {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  z-index: 3;
+}
 // 明亮主题时，添加背景滤镜，更加契合明亮主题
 // .container.light-mode:before,不知道用意如何
 .container.light-mode .video-bg:before {
@@ -113,14 +119,10 @@ img {
       color: var(--inactive-color);
       border-bottom: 2px solid transparent;
       transition: 0.3s;
-      // @media screen and (max-width: 610px) {
-      //   &:not(.main-header-link) {
-      //     display: none;
-      //   }
-      // }
       &:hover {
         color: var(--theme-color);
         border-bottom: 2px solid var(--theme-color);
+        cursor: pointer;
       }
     }
   }
@@ -297,7 +299,8 @@ img {
     font-size: 14px;
     border-radius: 6px;
     transition: 0.3s;
-    &:hover {
+    &:hover,
+    &.is-active {
       background-color: var(--hover-menu-bg);
     }
   }
